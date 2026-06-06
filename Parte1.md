@@ -511,7 +511,7 @@ En este capítulo introductorio, describí mi propio camino hacia los microservi
 
 Para manejar estos desafíos, definimos un conjunto de patrones de diseño y mapeamos brevemente las capacidades de productos de código abierto como Spring Boot, Spring Cloud, Kubernetes e Istio con los patrones de diseño.
 
-Ya estás ansioso por desarrollar tu primer microservicio, ¿verdad? En el próximo capítulo, se te presentará Spring Boot y herramientas complementarias de código abierto que usaremos para desarrollar nuestros primeros microservicios.
+Ya estás ansioso por desarrollar tu primer microservicio, ¿verdad? En el próximo capítulo, se te presentará Spring Boot y herramientas complementarias de código abierto que usaremos para desarrollar nuestros primeros microservicios. ```
 
 ```
 
