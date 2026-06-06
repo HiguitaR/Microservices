@@ -76,7 +76,7 @@ De la ilustración, también podemos ver que cada componente tiene su propio alm
 Cada componente se desarrolla usando Java y el Spring Framework, se empaqueta como un archivo WAR y se despliega como una aplicación web en un contenedor web Java EE, por ejemplo, Apache Tomcat. Dependiendo de los requisitos específicos del cliente, la plataforma puede desplegarse en uno o varios servidores.
 Un despliegue de dos nodos podría verse de la siguiente manera:
 
-## ![Figura 1.5](~/Documents/Microservices/images/figure1.5.png)
+![Figura 1.5](~/Documents/Microservices/images/figure1.5.png)
 
 ### Beneficios de los componentes de software autónomos
 
