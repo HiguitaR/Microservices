@@ -76,7 +76,7 @@ De la ilustración, también podemos ver que cada componente tiene su propio alm
 Cada componente se desarrolla usando Java y el Spring Framework, se empaqueta como un archivo WAR y se despliega como una aplicación web en un contenedor web Java EE, por ejemplo, Apache Tomcat. Dependiendo de los requisitos específicos del cliente, la plataforma puede desplegarse en uno o varios servidores.
 Un despliegue de dos nodos podría verse de la siguiente manera:
 
-![Figura 1.5](~/Documents/Microservices/images/figure1.5.png)
+![Figura 1.5](images/figure1.5.png)
 
 ### Beneficios de los componentes de software autónomos
 
@@ -85,20 +85,20 @@ De este proyecto, aprendí que descomponer la funcionalidad de la plataforma en 
 - Un cliente puede desplegar partes de la plataforma en su propio paisaje de sistemas, integrándola con sus sistemas existentes usando sus APIs bien definidas.
 - El siguiente es un ejemplo donde un cliente decidió desplegar el Componente A, el Componente B, el Componente D y el Componente E de la plataforma e integrarlos con dos sistemas existentes, el Sistema A y el Sistema B, en el paisaje de sistemas del cliente:
 
-![Figura 1.6](~/Documents/Microservices/images/figure1.6.png)
+![Figura 1.6](images/figure1.6.png)
 
 - Otro cliente podría optar por reemplazar partes de la funcionalidad de la plataforma con implementaciones que ya existen en el paisaje de sistemas del cliente, requiriendo potencialmente alguna adaptación de la funcionalidad existente a las APIs de la plataforma. El siguiente es un ejemplo donde un cliente ha reemplazado el Componente C y el Componente F de la plataforma con su propia implementación:
 
-![Figura 1.7](~/Documents/Microservices/images/figure1.7.png)
+![Figura 1.7](images/figure1.7.png)
 
 - Cada componente en la plataforma puede ser entregado y actualizado por separado. Gracias al uso de APIs bien definidas, un componente puede ser actualizado a una nueva versión sin depender del ciclo de vida de los otros componentes.
   El siguiente es un ejemplo donde el Componente A ha sido actualizado de la versión v1.1 a v1.2. El Componente B, que llama al Componente A, no necesita ser actualizado ya que usa una API bien definida; es decir, sigue siendo la misma después de la actualización (o al menos es compatible hacia atrás):
 
-![Figura 1.8](~/Documents/Microservices/images/figure1.8.png)
+![Figura 1.8](images/figure1.8.png)
 
 - Gracias al uso de APIs bien definidas, cada componente en la plataforma también puede escalarse horizontalmente a múltiples servidores de forma independiente de los otros componentes. El escalado puede hacerse ya sea para cumplir con requisitos de alta disponibilidad o para manejar volúmenes más altos de solicitudes. En este proyecto específico, se logró configurando manualmente balanceadores de carga frente a varios servidores, cada uno ejecutando un contenedor web Java EE. Un ejemplo donde el Componente A ha sido escalado a tres instancias se ve de la siguiente manera:
 
-![Figura 1.9](~/Documents/Microservices/images/figura1.9.png)
+![Figura 1.9](images/figura1.9.png)
 
 ### Desafíos con los componentes de software autónomos
 
