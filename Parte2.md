@@ -57,7 +57,7 @@ Para entender mejor lo que esto significa, veamos algunos ejemplos de código fu
 El mecanismo de autoconfiguración basado en convenciones se puede iniciar anotando la clase de la aplicación (es decir, la clase que contiene el método main estático) con la anotación @SpringBootApplication.
 El siguiente código muestra esto:
 
-```java@SpringBootApplication
+```java
 public class MyApplication {
   public static void main(String[] args) {
     SpringApplication.run(MyApplication.class, args);
@@ -84,15 +84,13 @@ public class MyComponentImpl implements MyComponent {}
 
 Otro componente en la aplicación puede obtener este componente inyectado automáticamente, también conocido como auto-wiring (cableado automático), usando la anotación @Autowired:
 
-```javapublic class AnotherComponent {
-private final MyComponent myComponent;
-@Autowired
-public AnotherComponent(MyComponent myComponent) {
-this.myComponent = myComponent;
+```java
+javapublic class AnotherComponent {
+    private final MyComponent myComponent;
+
+    @Autowired
+    public AnotherComponent(MyComponent myComponent) {
+        this.myComponent = myComponent;
+    }
 }
-
-```
-
-```
-
 ```
