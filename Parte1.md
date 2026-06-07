@@ -1,4 +1,4 @@
-# **_Parte_**
+# ***_Parte 1_***
 
 # Introducción al Desarrollo de Microservicios Usando Spring Boot
 
@@ -70,13 +70,13 @@ Estuve involucrado en un proyecto que comenzó en 2009 donde desarrollamos una p
 
 Como no puedo discutir características específicas de la plataforma de este proyecto, he generalizado los nombres de los componentes, los cuales están etiquetados desde el Componente A hasta el Componente F. La composición de la plataforma como un conjunto de componentes se ilustra de la siguiente manera:
 
-![Figura 1.4](~/Documents/Microservices/images/figure1.4.png)
+![Figura 1.4](images/Parte1/figure1.4.png)
 
 De la ilustración, también podemos ver que cada componente tiene su propio almacenamiento para datos persistentes y no comparte bases de datos con otros componentes.
 Cada componente se desarrolla usando Java y el Spring Framework, se empaqueta como un archivo WAR y se despliega como una aplicación web en un contenedor web Java EE, por ejemplo, Apache Tomcat. Dependiendo de los requisitos específicos del cliente, la plataforma puede desplegarse en uno o varios servidores.
 Un despliegue de dos nodos podría verse de la siguiente manera:
 
-![Figura 1.5](images/figure1.5.png)
+![Figura 1.5](images/Parte1/figure1.5.png)
 
 ### Beneficios de los componentes de software autónomos
 
@@ -85,20 +85,20 @@ De este proyecto, aprendí que descomponer la funcionalidad de la plataforma en 
 - Un cliente puede desplegar partes de la plataforma en su propio paisaje de sistemas, integrándola con sus sistemas existentes usando sus APIs bien definidas.
 - El siguiente es un ejemplo donde un cliente decidió desplegar el Componente A, el Componente B, el Componente D y el Componente E de la plataforma e integrarlos con dos sistemas existentes, el Sistema A y el Sistema B, en el paisaje de sistemas del cliente:
 
-![Figura 1.6](images/figure1.6.png)
+![Figura 1.6](images/Parte1/figure1.6.png)
 
 - Otro cliente podría optar por reemplazar partes de la funcionalidad de la plataforma con implementaciones que ya existen en el paisaje de sistemas del cliente, requiriendo potencialmente alguna adaptación de la funcionalidad existente a las APIs de la plataforma. El siguiente es un ejemplo donde un cliente ha reemplazado el Componente C y el Componente F de la plataforma con su propia implementación:
 
-![Figura 1.7](images/figure1.7.png)
+![Figura 1.7](images/Parte1/figure1.7.png)
 
 - Cada componente en la plataforma puede ser entregado y actualizado por separado. Gracias al uso de APIs bien definidas, un componente puede ser actualizado a una nueva versión sin depender del ciclo de vida de los otros componentes.
   El siguiente es un ejemplo donde el Componente A ha sido actualizado de la versión v1.1 a v1.2. El Componente B, que llama al Componente A, no necesita ser actualizado ya que usa una API bien definida; es decir, sigue siendo la misma después de la actualización (o al menos es compatible hacia atrás):
 
-![Figura 1.8](images/figure1.8.png)
+![Figura 1.8](images/Parte1/figure1.8.png)
 
 - Gracias al uso de APIs bien definidas, cada componente en la plataforma también puede escalarse horizontalmente a múltiples servidores de forma independiente de los otros componentes. El escalado puede hacerse ya sea para cumplir con requisitos de alta disponibilidad o para manejar volúmenes más altos de solicitudes. En este proyecto específico, se logró configurando manualmente balanceadores de carga frente a varios servidores, cada uno ejecutando un contenedor web Java EE. Un ejemplo donde el Componente A ha sido escalado a tres instancias se ve de la siguiente manera:
 
-![Figura 1.9](images/figura1.9.png)
+![Figura 1.9](images/Parte1/figure1.9.png)
 
 ### Desafíos con los componentes de software autónomos
 
@@ -137,7 +137,7 @@ En 2014, también aprendí sobre varios proyectos nuevos de código abierto que 
 Dado que este libro no puede cubrir todos los aspectos de las tecnologías que acabo de mencionar, me centraré en las partes que han demostrado ser útiles en proyectos de clientes en los que he participado desde 2014. Describiré cómo se pueden usar juntas para crear microservicios cooperativos que sean manejables, escalables y resilientes.
 Cada capítulo de este libro abordará un aspecto específico. Para demostrar cómo encajan las cosas, usaré un pequeño conjunto de microservicios cooperativos que evolucionaremos a lo largo de este libro. El paisaje de microservicios se describirá en el Capítulo 3, Creación de un Conjunto de Microservicios Cooperativos; por ahora, es suficiente saber que se ve así:
 
-![Figura 1.10](images/figure1.10.png)
+![Figura 1.10](images/Parte1/figure1.10.png)
 
 `Ten en cuenta que este es un paisaje de microservicios cooperativos muy pequeño. Los servicios de soporte circundantes que agregaremos en los próximos capítulos podrían parecer abrumadoramente complejos para estos pocos microservicios. Pero ten en cuenta que las soluciones presentadas en este libro tienen como objetivo respaldar un paisaje de sistemas mucho más grande.`
 
@@ -158,7 +158,7 @@ Una arquitectura de microservicios consiste en dividir aplicaciones monolíticas
   Dado que se han cumplido los criterios anteriores, es más fácil escalar un solo microservicio a más instancias (por ejemplo, usando más servidores virtuales) en comparación con escalar una gran aplicación monolítica.
   Utilizar las capacidades de escalado automático disponibles en la nube también es una posibilidad, pero normalmente no es factible para una gran aplicación monolítica. También es más fácil actualizar o incluso reemplazar un solo microservicio en comparación con actualizar una gran aplicación monolítica. Esto se ilustra en el siguiente diagrama, donde una aplicación monolítica se ha dividido en seis microservicios, todos los cuales se han desplegado en servidores separados. Algunos de los microservicios también se han escalado de forma independiente de los demás:
 
-![Figura 1.11](images/figure1.11.png)
+![Figura 1.11](images/Parte1/figure1.11.png)
 
 `Una pregunta muy frecuente que recibo de los clientes es:`
 
@@ -234,7 +234,7 @@ El patrón de descubrimiento de servicios tiene el siguiente problema, solución
 
 ¿Cómo pueden los clientes encontrar microservicios y sus instancias? Las instancias de microservicios típicamente tienen asignadas direcciones IP asignadas dinámicamente cuando se inician, por ejemplo, cuando se ejecutan en contenedores. Esto dificulta que un cliente realice una solicitud a un microservicio que, por ejemplo, expone una API REST a través de HTTP. Considere el siguiente diagrama:
 
-![Figura 1.12](images/figure1.12.png)
+![Figura 1.12](images/Parte1/figure1.12.png)
 
 ### Solución
 
@@ -266,7 +266,7 @@ En un paisaje de sistemas de microservicios, en muchos casos es deseable exponer
 
 Agregar un nuevo componente, un servidor de borde (edge server), al paisaje de sistemas por el que pasarán todas las solicitudes entrantes:
 
-![Figura 1.13](images/figure1.13.png)
+![Figura 1.13](images/Parte1/figure1.13.png)
 
 Notas de implementación: Un servidor de borde típicamente se comporta como un proxy inverso y puede integrarse con un servicio de descubrimiento para proporcionar capacidades dinámicas de balanceo de carga.
 
@@ -315,7 +315,7 @@ Una aplicación se despliega, tradicionalmente, junto con su configuración, por
 
 Agregar un nuevo componente, un servidor de configuración (configuration server), al paisaje de sistemas para almacenar la configuración de todos los microservicios, como se ilustra en el siguiente diagrama:
 
-![Figura 1.14](images/figure1.14.png)
+![Figura 1.14](images/Parte1/figure1.14.png)
 
 ### Requisitos de la solución
 
@@ -333,7 +333,7 @@ Tradicionalmente, una aplicación escribiría eventos de log en archivos de log 
 
 ### problema:
 
-![Figura 1.15](images/figure1.15.png)
+![Figura 1.15](images/Parte1/figure1.15.png)
 
 ### Solución
 
@@ -365,7 +365,7 @@ Algunos ejemplos de escenarios de fallo son los siguientes:
 - Si los usuarios finales comienzan a abrir casos de soporte sobre un tiempo de respuesta inaceptablemente largo, ¿cómo podemos identificar qué microservicio en una cadena de llamadas está causando la demora?
 
 El siguiente diagrama representa esto:
-![Figura 1.16](images/figure1.16.png)
+![Figura 1.16](images/Parte1/figure1.16.png)
 
 ### Solución
 
@@ -405,7 +405,7 @@ Los requisitos de la solución son los siguientes:
 
 El siguiente diagrama ilustra un escenario donde toda la comunicación síncrona dentro del paisaje de sistemas de microservicios pasa a través de interruptores de circuito. Todos los interruptores de circuito están cerrados; permiten el tráfico, excepto un interruptor de circuito (para el Microservicio E) que ha detectado problemas en el servicio al que van las solicitudes. Por lo tanto, este interruptor de circuito está abierto y utiliza lógica de fallo rápido; es decir, no llama al servicio fallido ni espera a que ocurra un timeout. En su lugar, el Microservicio E puede devolver inmediatamente una respuesta, aplicando opcionalmente alguna lógica de respaldo (fallback logic) antes de responder:
 
-![Figura 1.17](images/figure1.17.png)
+![Figura 1.17](images/Parte1/figure1.17.png)
 
 ### Bucle de control (Control loop)
 
@@ -419,7 +419,7 @@ En un paisaje de sistemas con un gran número de instancias de microservicios re
 
 Agregar un nuevo componente, un bucle de control (control loop), al paisaje de sistemas. Este proceso se ilustra de la siguiente manera:
 
-![Figura 1.18](images/figure1.18.png)
+![Figura 1.18](images/Parte1/figure1.18.png)
 
 ### Requisitos de la solución
 
@@ -450,7 +450,7 @@ Los requisitos de la solución son los siguientes:
 
 La siguiente captura de pantalla muestra Grafana, que visualiza métricas de Prometheus, una herramienta de monitoreo que veremos en el Capítulo 20, Monitoreo de Microservicios:
 
-![Figura 1.19](images/figure1.19.png)
+![Figura 1.19](images/Parte1/figure1.19.png)
 
 ¡Esa fue una lista extensa! Estoy seguro de que estos patrones de diseño te ayudaron a entender mejor los desafíos de los microservicios. A continuación, pasaremos a aprender sobre habilitadores de software.
 
@@ -466,9 +466,9 @@ Como ya hemos mencionado, tenemos una serie de herramientas de código abierto m
 
 La siguiente tabla mapea los patrones de diseño que necesitaremos para manejar estos desafíos, junto con la herramienta de código abierto correspondiente que se utilizará en este libro para implementar los patrones de diseño:
 
-![Figura 1.20](images/figure1.20.png)
+![Figura 1.20](images/Parte1/figure1.20.png)
 
-![Figura 1.21](images/figure1.21.png)
+![Figura 1.21](images/Parte1/figure1.21.png)
 
 Tenga en cuenta que Spring Cloud, Kubernetes o Istio se pueden usar para implementar algunos patrones de diseño, como el descubrimiento de servicios, el servidor de borde y la configuración centralizada. Discutiremos los pros y los contras de usar estas opciones más adelante en este libro.
 
@@ -511,8 +511,4 @@ En este capítulo introductorio, describí mi propio camino hacia los microservi
 
 Para manejar estos desafíos, definimos un conjunto de patrones de diseño y mapeamos brevemente las capacidades de productos de código abierto como Spring Boot, Spring Cloud, Kubernetes e Istio con los patrones de diseño.
 
-Ya estás ansioso por desarrollar tu primer microservicio, ¿verdad? En el próximo capítulo, se te presentará Spring Boot y herramientas complementarias de código abierto que usaremos para desarrollar nuestros primeros microservicios. ```
-
-```
-
-```
+Ya estás ansioso por desarrollar tu primer microservicio, ¿verdad? En el próximo capítulo, se te presentará Spring Boot y herramientas complementarias de código abierto que usaremos para desarrollar nuestros primeros microservicios.
